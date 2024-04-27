@@ -1,0 +1,25 @@
+[mysql.mysql_forum_base]
+host = "pc-2ze95c81777sr078o.mysql.polardb.rds.aliyuncs.com"
+port = 3306
+username = "barry"
+database = "forum"
+
+[mysql.mysql_keys_base]
+host = "pc-2ze95c81777sr078o.mysql.polardb.rds.aliyuncs.com"
+port = 3306
+username = "barry"
+database = "keys"
+
+[mysql.mysql_advanced]
+max_idle_conns = 10
+max_open_conns = 100
+conn_max_lifetime = 1
+conn_max_idle_time = 30
+
+[http_server.http_server_base]
+host = "172.30.110.151"
+port = 8004
+
+[http_server.http_server_advanced]
+readtimeout = 2
+writetimeout = 4
