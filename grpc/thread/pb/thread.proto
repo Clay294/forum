@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package thread;
+option go_package="github.com/Clay294/forum/grpc/thread";
+
+service ThreadRpc {
+  rpc CreateThread(ReqCreateThread) returns (Thread);
+}
+
+enum MAINSECTION{
+  Game = 0;
+  Video = 1;
+  AC = 2;
+};
+
+enum SUBSECTION{
+  Western = 0;
+  Japanese = 1;
+  Movie = 2;
+  Domestic = 3;
+  Anime = 4;
+  Comic =5;
+}
+
+enum THREADSTATUS{
+  DRAFT = 0;
+  PUBLISHED = 1;
+}
+
+message ReqCreateThreadMeta{
+  int64 userId = 1;
+  string userName = 2;
+}
+
+message ReqCreateThread{
+  string title = 1;
+  MAINSECTION mainSection = 2;
+  SUBSECTION subSection = 3;
+  string text = 4;
+  string link = 5;
+  string linkCode = 6;
+  string unzipPassword = 7;
+  int64 price = 8;
+  map<string,string> tags = 9;
+  THREADSTATUS status = 10;
+  ReqCreateThreadMeta reqCreateThreadMeta = 11;
+};
+
+message Thread {
+  ReqCreateThread threadBase = 1;
+  ThreadMeta threadMeta = 2;
+}
+
+message ThreadMeta {
+  int64 createdAt = 1;
+  int64 updatedAt = 2;
+  int64 publishedAt = 3;
+}
