@@ -2,8 +2,9 @@ package impl
 
 import (
 	"context"
-	"github.com/Clay294/forum/grpc/thread"
 	"time"
+
+	"github.com/Clay294/forum/grpc/thread"
 )
 
 func (c *controller) CreateThread(ctx context.Context, rct *thread.ReqCreateThread) (*thread.Thread, error) {
@@ -16,3 +17,21 @@ func (c *controller) CreateThread(ctx context.Context, rct *thread.ReqCreateThre
 		},
 	}, nil
 }
+
+// func (c *controller) UploadThread(stream thread.ThreadRpc_UploadThreadServer) error {
+// 	for {
+// 		data, err := stream.Recv()
+// 		if err != nil {
+// 			if err == io.EOF {
+// 				break
+// 			}
+// 			fmt.Println(err)
+// 			return err
+// 		}
+// 		fmt.Println(data.Meta)
+// 		fmt.Println(string(data.Data))
+// 	}
+
+// 	stream.SendAndClose(&thread.ResUploadThread{Message: "上传成功"})
+// 	return nil
+// }

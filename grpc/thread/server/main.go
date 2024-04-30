@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net"
 
 	"github.com/Clay294/forum/grpc/thread"
@@ -10,11 +9,11 @@ import (
 	"google.golang.org/grpc"
 )
 
+// var grpcServer = grpc.NewServer(grpc.ChainUnaryInterceptor(Authentication))
 var grpcServer = grpc.NewServer(grpc.ChainUnaryInterceptor(Authentication))
 
 func main() {
 	res := ioc.Controllers().GetServiceController("thread")
-	fmt.Println(res)
 	thread.RegisterThreadRpcServer(grpcServer, res.(thread.ThreadRpcServer))
 
 	sc, err := net.Listen("tcp", "127.0.0.1:4044")
